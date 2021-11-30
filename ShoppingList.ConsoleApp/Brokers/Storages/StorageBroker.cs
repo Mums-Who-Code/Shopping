@@ -6,6 +6,5 @@ namespace ShoppingList.ConsoleApp.Brokers.Storages
 {
     partial class StorageBroker : IStorageBroker
     {
-
     }
 }

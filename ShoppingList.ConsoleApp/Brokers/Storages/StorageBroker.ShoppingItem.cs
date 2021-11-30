@@ -1,19 +1,18 @@
 ﻿// ------------------------------------------------
 // Copyright (c) MumsWhoCode. All rights reserved.
 // ------------------------------------------------
-using System.Collections.Generic;
-using ShoppingList.ConsoleApp.Models.Samples;
+using ShoppingList.ConsoleApp.Models.ShoppingItems;
 
 namespace ShoppingList.ConsoleApp.Brokers.Storages
 {
     internal partial class StorageBroker : IStorageBroker
     {
-        List<Shopping> Shoppings = new List<Shopping>();
-        public Shopping InsertShopping(Shopping shopping)
+        List<ShoppingItem> ShoppingItems = new List<ShoppingItem>();
+        public ShoppingItem InsertShoppingItem(ShoppingItem shoppingitem)
         {
-            Shoppings.Add(shopping);
+            ShoppingItems.Add(shoppingitem);
 
-            return shopping;
+            return shoppingitem;
         }
     }
 }
