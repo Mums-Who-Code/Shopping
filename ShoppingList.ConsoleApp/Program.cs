@@ -2,6 +2,8 @@
 // Copyright (c) MumsWhoCode. All rights reserved.
 // ------------------------------------------------
 
+using System;
+
 namespace ShoppingList.ConsoleApp
 {
     class Program
