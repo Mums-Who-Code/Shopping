@@ -2,13 +2,12 @@
 // Copyright (c) MumsWhoCode. All rights reserved.
 // ------------------------------------------------
 
-namespace ShoppingList.ConsoleApp
+namespace ShoppingList.ConsoleApp.Models.Samples
 {
-    class Program
+    class Shopping
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
+        public int Id { get; set; }
+        public string Text { get; set; }
+
     }
 }

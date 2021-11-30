@@ -2,13 +2,9 @@
 // Copyright (c) MumsWhoCode. All rights reserved.
 // ------------------------------------------------
 
-namespace ShoppingList.ConsoleApp
+namespace ShoppingList.ConsoleApp.Brokers.Storages
 {
-    class Program
+    partial interface IStorageBroker
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
     }
 }
