@@ -4,7 +4,7 @@
 
 namespace ShoppingList.ConsoleApp.Brokers.Storages
 {
-    partial class StorageBroker : IStorageBroker
+    public partial class StorageBroker : IStorageBroker
     {
     }
 }
