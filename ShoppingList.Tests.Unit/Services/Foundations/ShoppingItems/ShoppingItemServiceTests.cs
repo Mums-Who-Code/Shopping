@@ -9,11 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Moq;
 using ShoppingList.ConsoleApp.Brokers.Storages;
+using ShoppingList.ConsoleApp.Models.ShoppingItems;
 using ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems;
+using Tynamix.ObjectFiller;
 
 namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
 {
-    class ShoppingItemServiceTests
+    public partial class ShoppingItemServiceTests
     {
         private readonly IShoppingItemService shoppingItemService;
         private readonly Mock<IStorageBroker> storageBrokerMock;
@@ -25,5 +27,13 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
             this.shoppingItemService = new ShoppingItemService(
                 this.storageBrokerMock.Object);   
         }
+
+        private ShoppingItem CreateRandomShoppingItem() =>
+            CreateShoppingItemFiller().Create();
+       
+        private static Filler<ShoppingItem> CreateShoppingItemFiller() => 
+            new Filler<ShoppingItem>();
+
+        
     }
 }
