@@ -2,11 +2,6 @@
 // Copyright (c) MumsWhoCode. All rights reserved.
 // ------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Moq;
 using ShoppingList.ConsoleApp.Brokers.Storages;
 using ShoppingList.ConsoleApp.Models.ShoppingItems;
@@ -22,18 +17,18 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
 
         public ShoppingItemServiceTests()
         {
-            this.storageBrokerMock = new Mock<IStorageBroker>();    
+            this.storageBrokerMock = new Mock<IStorageBroker>();
 
             this.shoppingItemService = new ShoppingItemService(
-                this.storageBrokerMock.Object);   
+                this.storageBrokerMock.Object);
         }
 
         private ShoppingItem CreateRandomShoppingItem() =>
             CreateShoppingItemFiller().Create();
-       
-        private static Filler<ShoppingItem> CreateShoppingItemFiller() => 
+
+        private static Filler<ShoppingItem> CreateShoppingItemFiller() =>
             new Filler<ShoppingItem>();
 
-        
+
     }
 }

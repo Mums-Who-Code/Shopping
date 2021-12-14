@@ -2,11 +2,8 @@
 // Copyright (c) MumsWhoCode. All rights reserved.
 // ------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FluentAssertions;
+using Moq;
 using ShoppingList.ConsoleApp.Models.ShoppingItems;
 using Xunit;
 
@@ -20,12 +17,28 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
         {
             // given
 
-            ShoppingItem inputShoppingItem = CreateRandomShoppingItem();
+            ShoppingItem randomShoppingItem = CreateRandomShoppingItem();
+            ShoppingItem inputShoppingItem = randomShoppingItem;
+            ShoppingItem persistedShoppingItem = inputShoppingItem;
+            ShoppingItem expectedShoppingItem = persistedShoppingItem;
+
+            this.storageBrokerMock.Setup(broker =>
+                broker.InsertShoppingItem(inputShoppingItem))
+                    .Returns(persistedShoppingItem);
 
             // when
-            this.shoppingItemService.AddShoppingItem(inputShoppingItem);
+            ShoppingItem actualShoppingItem = this.shoppingItemService.AddShoppingItem(inputShoppingItem);
 
             // then
+            actualShoppingItem.Should().BeEquivalentTo(expectedShoppingItem);
+
+            this.storageBrokerMock.Verify(broker =>
+                broker.InsertShoppingItem(inputShoppingItem),
+                    Times.Once);
+
+            this.storageBrokerMock.VerifyNoOtherCalls();
+
+
         }
     }
 }
