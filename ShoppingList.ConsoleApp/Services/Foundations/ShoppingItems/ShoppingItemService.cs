@@ -16,6 +16,6 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
             this.storageBroker = storageBroker;
 
         public ShoppingItem AddShoppingItem(ShoppingItem shoppingItem) =>
-            throw new NotImplementedException();
+             this.storageBroker.InsertShoppingItem(shoppingItem);
     }
 }

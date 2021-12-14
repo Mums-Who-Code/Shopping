@@ -3,6 +3,7 @@
 // ------------------------------------------------
 
 using FluentAssertions;
+using Force.DeepCloner;
 using Moq;
 using ShoppingList.ConsoleApp.Models.ShoppingItems;
 using Xunit;
@@ -20,7 +21,7 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
             ShoppingItem randomShoppingItem = CreateRandomShoppingItem();
             ShoppingItem inputShoppingItem = randomShoppingItem;
             ShoppingItem persistedShoppingItem = inputShoppingItem;
-            ShoppingItem expectedShoppingItem = persistedShoppingItem;
+            ShoppingItem expectedShoppingItem = persistedShoppingItem.DeepClone();
 
             this.storageBrokerMock.Setup(broker =>
                 broker.InsertShoppingItem(inputShoppingItem))
