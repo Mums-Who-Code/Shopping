@@ -7,7 +7,7 @@ using ShoppingList.ConsoleApp.Models.ShoppingItems;
 
 namespace ShoppingList.ConsoleApp.Brokers.Storages
 {
-    internal partial class StorageBroker : IStorageBroker
+    public partial class StorageBroker : IStorageBroker
     {
         List<ShoppingItem> ShoppingItems = new List<ShoppingItem>();
 

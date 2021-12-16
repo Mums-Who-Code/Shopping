@@ -6,7 +6,7 @@ using ShoppingList.ConsoleApp.Models.ShoppingItems;
 
 namespace ShoppingList.ConsoleApp.Brokers.Storages
 {
-    partial interface IStorageBroker
+    public partial interface IStorageBroker
     {
         ShoppingItem InsertShoppingItem(ShoppingItem shoppingitem);
     }

@@ -4,7 +4,7 @@
 
 namespace ShoppingList.ConsoleApp.Brokers.Storages
 {
-    partial interface IStorageBroker
+    public partial interface IStorageBroker
     {
     }
 }

@@ -2,9 +2,12 @@
 // Copyright (c) MumsWhoCode. All rights reserved.
 // ------------------------------------------------
 
-namespace ShoppingList.ConsoleApp.Brokers.Storages
+using System;
+
+namespace ShoppingList.ConsoleApp.Brokers.Loggings
 {
-    public partial class StorageBroker : IStorageBroker
+    public interface ILoggingBroker
     {
+        void LogError(Exception exception);
     }
 }
