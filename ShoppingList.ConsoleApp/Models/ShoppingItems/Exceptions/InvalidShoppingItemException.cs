@@ -6,11 +6,10 @@ using Xeptions;
 
 namespace ShoppingList.ConsoleApp.Models.ShoppingItems.Exceptions
 {
-    public class NullShoppingItemException : Xeption
+    public class InvalidShoppingItemException : Xeption
     {
-        public NullShoppingItemException()
-            : base(message: "Shopping item is null.")
-        {
-        }
+        public InvalidShoppingItemException()
+            : base(message: "Shopping Item is invalid, fix the errors and try again.")
+        { }
     }
 }

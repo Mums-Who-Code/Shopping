@@ -2,16 +2,11 @@
 // Copyright (c) MumsWhoCode. All rights reserved.
 // ------------------------------------------------
 
+using System;
+using System.Threading.Tasks;
 using Moq;
 using ShoppingList.ConsoleApp.Models.ShoppingItems;
 using ShoppingList.ConsoleApp.Models.ShoppingItems.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using Xeptions;
 using Xunit;
 
 namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
@@ -42,8 +37,55 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
                 Times.Never);
 
             this.loggingBrokerMock.VerifyNoOtherCalls();
-            this.storageBrokerMock.VerifyNoOtherCalls(); 
-       }  
+            this.storageBrokerMock.VerifyNoOtherCalls();
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData("  ")]
+        public async Task ShouldThrowValidationExceptionOnAddIfShoppingItemIsInvalidAndLogIt(
+            string invalidText)
+        {
+            // given
+            ShoppingItem invalidShoppingItem = new ShoppingItem
+            {
+                Name = invalidText
+            };
+
+            var invalidShoppingItemException = new InvalidShoppingItemException();
+
+            invalidShoppingItemException.AddData(
+                key: nameof(ShoppingItem.Id),
+                values: "Id is required.");
+
+            invalidShoppingItemException.AddData(
+                key: nameof(ShoppingItem.Name),
+                values: "Name is required.");
+
+            invalidShoppingItemException.AddData(
+                key: nameof(ShoppingItem.Quantity),
+                values: "Quantity is required.");
+
+            var expectedShoppingItemValidationException = new ShoppingItemValidationException(invalidShoppingItemException);
+
+            // when
+            Action addShoppingItemAction = () => this.shoppingItemService.AddShoppingItem(invalidShoppingItem);
+
+            // then
+            Assert.Throws<ShoppingItemValidationException>(addShoppingItemAction);
+
+            this.loggingBrokerMock.Verify(broker =>
+            broker.LogError(It.Is(SameExceptionAs(
+            expectedShoppingItemValidationException))),
+                Times.Once);
+
+            this.storageBrokerMock.Verify(broker =>
+               broker.InsertShoppingItem(It.IsAny<ShoppingItem>()),
+                    Times.Never);
+            this.loggingBrokerMock.VerifyNoOtherCalls();
+            this.storageBrokerMock.VerifyNoOtherCalls();
+        }
 
     }
 }

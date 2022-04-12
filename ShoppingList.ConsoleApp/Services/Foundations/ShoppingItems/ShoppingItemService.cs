@@ -2,11 +2,9 @@
 // Copyright (c) MumsWhoCode. All rights reserved.
 // ------------------------------------------------
 
-using System;
 using ShoppingList.ConsoleApp.Brokers.Loggings;
 using ShoppingList.ConsoleApp.Brokers.Storages;
 using ShoppingList.ConsoleApp.Models.ShoppingItems;
-using ShoppingList.ConsoleApp.Models.ShoppingItems.Exceptions;
 
 namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
 {
@@ -15,7 +13,7 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
         private readonly IStorageBroker storageBroker;
         private readonly ILoggingBroker loggingBroker;
         public ShoppingItemService(
-            IStorageBroker storageBroker, 
+            IStorageBroker storageBroker,
             ILoggingBroker loggingBroker)
         {
             this.storageBroker = storageBroker;
