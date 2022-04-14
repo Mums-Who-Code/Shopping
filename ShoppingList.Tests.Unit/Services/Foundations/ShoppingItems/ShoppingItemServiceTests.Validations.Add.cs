@@ -44,7 +44,7 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
         [InlineData(null)]
         [InlineData("")]
         [InlineData("  ")]
-        public async Task ShouldThrowValidationExceptionOnAddIfShoppingItemIsInvalidAndLogIt(
+        public void ShouldThrowValidationExceptionOnAddIfShoppingItemIsInvalidAndLogIt(
             string invalidText)
         {
             // given
