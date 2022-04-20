@@ -22,6 +22,10 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
             {
                 throw CreateAndLogValidationException(nullShoppingItemException);
             }
+            catch (InvalidShoppingItemException invalidShoppingItemException)
+            {
+                throw CreateAndLogValidationException(invalidShoppingItemException);
+            }
         }
 
         private ShoppingItemValidationException CreateAndLogValidationException(Xeption exception)
