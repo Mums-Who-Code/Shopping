@@ -40,7 +40,7 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
             }
         }
 
-        private static void Validate(dynamic dynamic, params (dynamic Rule, string Parameter)[] validations)
+        private static void Validate(params (dynamic Rule, string Parameter)[] validations)
         {
             var invalidShoppingItemException = new InvalidShoppingItemException();
 
