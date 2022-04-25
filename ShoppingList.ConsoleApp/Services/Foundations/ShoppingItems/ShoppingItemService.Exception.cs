@@ -2,6 +2,7 @@
 // Copyright (c) MumsWhoCode. All rights reserved.
 // ------------------------------------------------
 
+using System;
 using ShoppingList.ConsoleApp.Models.ShoppingItems;
 using ShoppingList.ConsoleApp.Models.ShoppingItems.Exceptions;
 using Xeptions;
@@ -26,14 +27,14 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
             {
                 throw CreateAndLogValidationException(invalidShoppingItemException);
             }
+            
         }
-
         private ShoppingItemValidationException CreateAndLogValidationException(Xeption exception)
         {
             var shoppingItemValidationException = new ShoppingItemValidationException(exception);
             this.loggingBroker.LogError(shoppingItemValidationException);
 
-            throw shoppingItemValidationException;
+            return shoppingItemValidationException;
         }
     }
 }
