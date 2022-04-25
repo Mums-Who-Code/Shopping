@@ -27,8 +27,15 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
             {
                 throw CreateAndLogValidationException(invalidShoppingItemException);
             }
-            
+            catch (Exception exception)
+            {
+                var failedShoppingItemServiceException =
+                    new FailedShoppingItemServiceException(exception);
+
+                throw CreateAndLogServiceException(failedShoppingItemServiceException);
+            }
         }
+
         private ShoppingItemValidationException CreateAndLogValidationException(Xeption exception)
         {
             var shoppingItemValidationException = new ShoppingItemValidationException(exception);
@@ -36,5 +43,13 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
 
             return shoppingItemValidationException;
         }
+        private ShoppingItemServiceException CreateAndLogServiceException(Xeption exception)
+        {
+            var shoppingItemServiceException = new ShoppingItemServiceException(exception);
+            this.loggingBroker.LogError(shoppingItemServiceException);
+
+            return shoppingItemServiceException;
+        }
+
     }
 }
