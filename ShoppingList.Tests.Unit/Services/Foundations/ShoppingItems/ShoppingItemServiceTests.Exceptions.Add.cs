@@ -21,6 +21,7 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
         {
             //given
             ShoppingItem someShoppingItem = CreateRandomShoppingItem();
+
             var serviceException = new Exception();
 
             var failedShoppingItemServiceException = 
@@ -31,7 +32,7 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
 
             this.storageBrokerMock.Setup(broker =>
                 broker.InsertShoppingItem(It.IsAny<ShoppingItem>()))
-                .Throws(serviceException);
+                    .Throws(serviceException);
 
 
             //when

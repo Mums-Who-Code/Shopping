@@ -37,8 +37,8 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
                 broker.InsertShoppingItem(inputShoppingItem),
                     Times.Once);
 
-            this.loggingBrokerMock.VerifyNoOtherCalls();
             this.storageBrokerMock.VerifyNoOtherCalls();
+            this.loggingBrokerMock.VerifyNoOtherCalls();
         }
     }
 }

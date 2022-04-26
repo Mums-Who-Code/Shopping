@@ -43,6 +43,7 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
 
             return shoppingItemValidationException;
         }
+
         private ShoppingItemServiceException CreateAndLogServiceException(Xeption exception)
         {
             var shoppingItemServiceException = new ShoppingItemServiceException(exception);
@@ -50,6 +51,5 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
 
             return shoppingItemServiceException;
         }
-
     }
 }

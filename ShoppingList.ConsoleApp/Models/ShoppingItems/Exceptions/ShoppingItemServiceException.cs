@@ -14,7 +14,7 @@ namespace ShoppingList.ConsoleApp.Models.ShoppingItems.Exceptions
     public class ShoppingItemServiceException : Xeption
     {
         public ShoppingItemServiceException(Xeption innerException)
-            : base(message: "ShoppingItem service error occured, contact support.",
+            : base(message: "Shopping item service error occurred, contact support.",
                   innerException)
         { } 
     }

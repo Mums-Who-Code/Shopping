@@ -47,7 +47,7 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
             string invalidText)
         {
             // given
-            ShoppingItem invalidShoppingItem = new ShoppingItem
+           ShoppingItem invalidShoppingItem = new ShoppingItem
             {
                 Name = invalidText
             };
@@ -75,13 +75,14 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
             Assert.Throws<ShoppingItemValidationException>(addShoppingItemAction);
 
             this.loggingBrokerMock.Verify(broker =>
-            broker.LogError(It.Is(SameExceptionAs(
-            expectedShoppingItemValidationException))),
-                Times.Once);
+                broker.LogError(It.Is(SameExceptionAs(
+                    expectedShoppingItemValidationException))),
+                        Times.Once);
 
             this.storageBrokerMock.Verify(broker =>
                broker.InsertShoppingItem(It.IsAny<ShoppingItem>()),
                     Times.Never);
+
             this.loggingBrokerMock.VerifyNoOtherCalls();
             this.storageBrokerMock.VerifyNoOtherCalls();
         }

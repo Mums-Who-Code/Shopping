@@ -19,17 +19,7 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
             this.storageBroker = storageBroker;
             this.loggingBroker = loggingBroker;
         }
-        /*public ShoppingItem AddShoppingItem(ShoppingItem shoppingItem)
-        {
-            if(shoppingItem == null)
-            {
-                var exception = new ShoppingItemValidationException(new NullShoppingItemException());
-                this.loggingBroker.LogError(exception);
-                throw exception;
-            }
-            return this.storageBroker.InsertShoppingItem(shoppingItem);
-        }*/
-
+        
         public ShoppingItem AddShoppingItem(ShoppingItem shoppingItem) =>
         TryCatch(() =>
         {
