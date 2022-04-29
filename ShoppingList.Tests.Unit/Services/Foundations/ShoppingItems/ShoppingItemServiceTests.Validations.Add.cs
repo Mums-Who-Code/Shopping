@@ -81,7 +81,7 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
 
             this.storageBrokerMock.Verify(broker =>
                broker.InsertShoppingItem(It.IsAny<ShoppingItem>()),
-                Times.Never);
+                    Times.Never);
 
             this.loggingBrokerMock.VerifyNoOtherCalls();
             this.storageBrokerMock.VerifyNoOtherCalls();
