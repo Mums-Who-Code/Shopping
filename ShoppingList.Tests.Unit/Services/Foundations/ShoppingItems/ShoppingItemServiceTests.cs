@@ -43,7 +43,5 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
 
         private static Filler<ShoppingItem> CreateShoppingItemFiller() =>
             new Filler<ShoppingItem>();
-
-
     }
 }

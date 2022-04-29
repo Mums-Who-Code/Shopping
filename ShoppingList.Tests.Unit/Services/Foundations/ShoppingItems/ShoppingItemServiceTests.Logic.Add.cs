@@ -13,11 +13,9 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
     public partial class ShoppingItemServiceTests
     {
         [Fact]
-
         public void ShouldAddShoppingItem()
         {
             // given
-
             ShoppingItem randomShoppingItem = CreateRandomShoppingItem();
             ShoppingItem inputShoppingItem = randomShoppingItem;
             ShoppingItem persistedShoppingItem = inputShoppingItem;

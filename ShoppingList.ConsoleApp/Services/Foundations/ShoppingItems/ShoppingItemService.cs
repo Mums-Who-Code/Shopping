@@ -12,6 +12,7 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
     {
         private readonly IStorageBroker storageBroker;
         private readonly ILoggingBroker loggingBroker;
+
         public ShoppingItemService(
             IStorageBroker storageBroker,
             ILoggingBroker loggingBroker)

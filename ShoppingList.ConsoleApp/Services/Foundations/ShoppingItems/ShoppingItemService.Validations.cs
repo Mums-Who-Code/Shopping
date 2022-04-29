@@ -15,9 +15,9 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
             ValidateShoppingItemIsNotNull(shoppingItem);
 
             Validate(
-                (Rule: IsInvalid(shoppingItem.Id), Parameter: nameof(ShoppingItem.Id)),
-                (Rule: IsInvalid(shoppingItem.Name), Parameter: nameof(ShoppingItem.Name)),
-                (Rule: IsInvalid(shoppingItem.Quantity), Parameter: nameof(ShoppingItem.Quantity)));
+                (Rule: IsInvalid(integerValue: shoppingItem.Id), Parameter: nameof(ShoppingItem.Id)),
+                (Rule: IsInvalid(name: shoppingItem.Name), Parameter: nameof(ShoppingItem.Name)),
+                (Rule: IsInvalid(integerValue: shoppingItem.Quantity), Parameter: nameof(ShoppingItem.Quantity)));
         }
 
         private static dynamic IsInvalid(int integerValue) => new
