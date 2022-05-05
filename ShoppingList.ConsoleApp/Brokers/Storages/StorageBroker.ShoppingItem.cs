@@ -17,5 +17,7 @@ namespace ShoppingList.ConsoleApp.Brokers.Storages
 
             return shoppingitem;
         }
+
+        public List<ShoppingItem> SelectAllShoppingItems() => ShoppingItems;
     }
 }
