@@ -3,10 +3,6 @@
 // ------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Moq;
 using ShoppingList.ConsoleApp.Models.ShoppingItems.Exceptions;
 using Xunit;
@@ -21,7 +17,7 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
             // given
             var serviceException = new Exception();
 
-            var failedShoppingItemServiceException = 
+            var failedShoppingItemServiceException =
                 new FailedShoppingItemServiceException(serviceException);
 
             var expectedShoppingItemServiceException =

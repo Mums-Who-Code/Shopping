@@ -31,6 +31,9 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
         });
 
         public List<ShoppingItem> RetrieveAllShoppingItems() =>
-            this.storageBroker.SelectAllShoppingItems();
+        TryCatch(() =>
+        {
+           return this.storageBroker.SelectAllShoppingItems();
+        });
     }
 }
