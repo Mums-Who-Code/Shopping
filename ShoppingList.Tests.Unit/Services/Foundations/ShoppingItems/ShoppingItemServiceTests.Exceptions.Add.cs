@@ -3,10 +3,6 @@
 // ------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Moq;
 using ShoppingList.ConsoleApp.Models.ShoppingItems;
 using ShoppingList.ConsoleApp.Models.ShoppingItems.Exceptions;
@@ -23,7 +19,7 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
             ShoppingItem someShoppingItem = CreateRandomShoppingItem();
             var serviceException = new Exception();
 
-            var failedShoppingItemServiceException = 
+            var failedShoppingItemServiceException =
                 new FailedShoppingItemServiceException(serviceException);
 
             var expectedShoppingItemServiceException =
@@ -33,7 +29,7 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
                 broker.InsertShoppingItem(It.IsAny<ShoppingItem>()))
                     .Throws(serviceException);
 
-             //when
+            //when
             Action addShoppingItemAction = () => this.shoppingItemService.AddShoppingItem(someShoppingItem);
 
             //then

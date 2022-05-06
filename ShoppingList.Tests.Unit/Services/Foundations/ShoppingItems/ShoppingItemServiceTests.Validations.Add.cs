@@ -47,7 +47,7 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
             string invalidText)
         {
             // given
-           var invalidShoppingItem = new ShoppingItem
+            var invalidShoppingItem = new ShoppingItem
             {
                 Name = invalidText
             };
