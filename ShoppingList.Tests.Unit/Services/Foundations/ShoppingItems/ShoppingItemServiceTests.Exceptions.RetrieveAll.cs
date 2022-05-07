@@ -26,6 +26,7 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
             this.storageBrokerMock.Setup(broker =>
                 broker.SelectAllShoppingItems())
                     .Throws(serviceException);
+
             // when
             Action retrieveAllAction = () => this.shoppingItemService.RetrieveAllShoppingItems();
 

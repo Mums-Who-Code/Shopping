@@ -33,7 +33,7 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
         public List<ShoppingItem> RetrieveAllShoppingItems() =>
         TryCatch(() =>
         {
-           return this.storageBroker.SelectAllShoppingItems();
+            return this.storageBroker.SelectAllShoppingItems();
         });
     }
 }
