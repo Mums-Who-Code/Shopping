@@ -2,7 +2,6 @@
 // Copyright (c) MumsWhoCode. All rights reserved.
 // ------------------------------------------------
 
-using System;
 using Microsoft.Extensions.Logging;
 using ShoppingList.ConsoleApp.Brokers.Loggings;
 using ShoppingList.ConsoleApp.Brokers.Storages;

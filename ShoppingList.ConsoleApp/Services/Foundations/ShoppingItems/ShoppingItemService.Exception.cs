@@ -3,6 +3,7 @@
 // ------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using ShoppingList.ConsoleApp.Models.ShoppingItems;
 using ShoppingList.ConsoleApp.Models.ShoppingItems.Exceptions;
 using Xeptions;
@@ -12,6 +13,7 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
     public partial class ShoppingItemService
     {
         private delegate ShoppingItem ReturningShoppingItemFunction();
+        private delegate List<ShoppingItem> ReturningShoppingItemsFunction();
 
         private ShoppingItem TryCatch(ReturningShoppingItemFunction returningShoppingItemFunction)
         {
@@ -33,6 +35,22 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
                     new FailedShoppingItemServiceException(exception);
 
                 throw CreateAndLogServiceException(failedShoppingItemServiceException);
+            }
+        }
+
+        private List<ShoppingItem> TryCatch(ReturningShoppingItemsFunction returningShoppingItemsFunction)
+        {
+            try
+            {
+                return returningShoppingItemsFunction();
+            }
+            catch(Exception exception)
+            {
+                var failedShoppingItemServiceException =
+                    new FailedShoppingItemServiceException(exception);
+
+                throw CreateAndLogServiceException(
+                    failedShoppingItemServiceException);
             }
         }
 

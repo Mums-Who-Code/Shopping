@@ -4,7 +4,6 @@
 
 using System;
 using Moq;
-using ShoppingList.ConsoleApp.Models.ShoppingItems;
 using ShoppingList.ConsoleApp.Models.ShoppingItems.Exceptions;
 using Xunit;
 
@@ -13,10 +12,9 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
     public partial class ShoppingItemServiceTests
     {
         [Fact]
-        public void ShouldThrowServiceExceptionOnAddIfServiceErrorOccursAndLogIt()
+        public void ShoudThrowServiceExceptionOnRetrieveAllIfServiceErrorOccursAndLogIt()
         {
-            //given
-            ShoppingItem someShoppingItem = CreateRandomShoppingItem();
+            // given
             var serviceException = new Exception();
 
             var failedShoppingItemServiceException =
@@ -26,17 +24,17 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
                 new ShoppingItemServiceException(failedShoppingItemServiceException);
 
             this.storageBrokerMock.Setup(broker =>
-                broker.InsertShoppingItem(It.IsAny<ShoppingItem>()))
+                broker.SelectAllShoppingItems())
                     .Throws(serviceException);
 
-            //when
-            Action addShoppingItemAction = () => this.shoppingItemService.AddShoppingItem(someShoppingItem);
+            // when
+            Action retrieveAllAction = () => this.shoppingItemService.RetrieveAllShoppingItems();
 
-            //then
-            Assert.Throws<ShoppingItemServiceException>(addShoppingItemAction);
+            // then
+            Assert.Throws<ShoppingItemServiceException>(retrieveAllAction);
 
             this.storageBrokerMock.Verify(broker =>
-                broker.InsertShoppingItem(It.IsAny<ShoppingItem>()),
+                broker.SelectAllShoppingItems(),
                     Times.Once);
 
             this.loggingBrokerMock.Verify(broker =>

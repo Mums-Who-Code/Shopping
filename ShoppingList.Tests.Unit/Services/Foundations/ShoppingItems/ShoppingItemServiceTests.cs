@@ -3,6 +3,8 @@
 // ------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using Moq;
 using ShoppingList.ConsoleApp.Brokers.Loggings;
@@ -38,7 +40,13 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
                && (actualException.InnerException as Xeption).DataEquals(expectedException.InnerException.Data);
         }
 
-        private ShoppingItem CreateRandomShoppingItem() =>
+        private static int GetRandomNumber() =>
+            new IntRange(min: 2, max: 10).GetValue();
+
+        private static List<ShoppingItem> CreateRandomShoppingItems() =>
+            CreateShoppingItemFiller().Create(count: GetRandomNumber()).ToList();
+
+        private static ShoppingItem CreateRandomShoppingItem() =>
             CreateShoppingItemFiller().Create();
 
         private static Filler<ShoppingItem> CreateShoppingItemFiller() =>
