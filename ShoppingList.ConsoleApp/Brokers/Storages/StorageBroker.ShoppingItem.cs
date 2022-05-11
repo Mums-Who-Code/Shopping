@@ -19,5 +19,9 @@ namespace ShoppingList.ConsoleApp.Brokers.Storages
         }
 
         public List<ShoppingItem> SelectAllShoppingItems() => ShoppingItems;
+
+
+        public ShoppingItem SelectShoppingItemById(int id) =>
+            ShoppingItems.Find(shoppingItem => shoppingItem.Id == id);
     }
 }
