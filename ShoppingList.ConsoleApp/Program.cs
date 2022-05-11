@@ -2,6 +2,7 @@
 // Copyright (c) MumsWhoCode. All rights reserved.
 // ------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using ShoppingList.ConsoleApp.Brokers.Loggings;
 using ShoppingList.ConsoleApp.Brokers.Storages;
@@ -28,6 +29,16 @@ namespace ShoppingList.ConsoleApp
             };
 
             shoppingItemService.AddShoppingItem(inputShoppingItem);
+
+            inputShoppingItem = new ShoppingItem
+            {
+                Id = 25,
+                Name = "Vegetable",
+                Quantity = 6
+            };
+
+            shoppingItemService.AddShoppingItem(inputShoppingItem);
+            List<ShoppingItem> storedShoppingItems = shoppingItemService.RetrieveAllShoppingItems();
         }
     }
 }
