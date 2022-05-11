@@ -44,7 +44,7 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
             {
                 return returningShoppingItemsFunction();
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 var failedShoppingItemServiceException =
                     new FailedShoppingItemServiceException(exception);
