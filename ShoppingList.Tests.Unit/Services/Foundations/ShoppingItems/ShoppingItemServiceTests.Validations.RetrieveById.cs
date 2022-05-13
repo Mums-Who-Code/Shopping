@@ -16,7 +16,7 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
         public void ShouldThrowValidationExceptionOnRetrieveByIdIfIdIsInvalidAndLogIt()
         {
             // given
-            var invalidShoppingItem = new ShoppingItem();
+            int invalidId = default;
             var invalidShoppingItemException = new InvalidShoppingItemException();
 
             invalidShoppingItemException.AddData(
@@ -28,7 +28,7 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
 
             // when 
             Action retrieveShoppingItemByIdAction = () =>
-                this.shoppingItemService.RetrieveShoppingItemById(invalidShoppingItem.Id);
+                this.shoppingItemService.RetrieveShoppingItemById(invalidId);
 
             // then
             Assert.Throws<ShoppingItemValidationException>(retrieveShoppingItemByIdAction);
