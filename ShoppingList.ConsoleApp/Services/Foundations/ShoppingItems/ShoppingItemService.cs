@@ -37,6 +37,6 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
         });
 
         public ShoppingItem RetrieveShoppingItemById(int id) =>
-            throw new System.NotImplementedException();
+            this.storageBroker.SelectShoppingItemById(id);
     }
 }
