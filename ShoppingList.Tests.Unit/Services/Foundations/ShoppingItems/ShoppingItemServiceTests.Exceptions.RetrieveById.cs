@@ -48,5 +48,41 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
             this.storageBrokerMock.VerifyNoOtherCalls();
             this.loggingBrokerMock.VerifyNoOtherCalls();
         }
+
+        [Fact]
+        public void ShouldThrowServiceExceptionOnRetrieveByIdIfServiceErrorOccursAndLogIt()
+        {
+            // given
+            int someShoppingItemId = GetRandomNumber();
+            var serviceException = new Exception();
+
+            var failedShoppingItemServiceException =
+                new FailedShoppingItemServiceException(serviceException);
+
+            var expectedShoppingItemServiceException =
+                new ShoppingItemServiceException(failedShoppingItemServiceException);
+
+            this.storageBrokerMock.Setup(broker =>
+                broker.SelectShoppingItemById(It.IsAny<int>()))
+                    .Throws(serviceException);
+
+            // when 
+            Action retrieveShoppingItemByIdAction = () => this.shoppingItemService.RetrieveShoppingItemById(someShoppingItemId);
+
+            // then
+            Assert.Throws<ShoppingItemServiceException>(retrieveShoppingItemByIdAction);
+
+            this.storageBrokerMock.Verify(broker =>
+                broker.SelectShoppingItemById(It.IsAny<int>()),
+                    Times.Once);
+
+            this.loggingBrokerMock.Verify(broker =>
+                broker.LogError(It.Is(SameExceptionAs(
+                    expectedShoppingItemServiceException))),
+                        Times.Once);
+
+            this.storageBrokerMock.VerifyNoOtherCalls();
+            this.loggingBrokerMock.VerifyNoOtherCalls();
+        }
     }
 }
