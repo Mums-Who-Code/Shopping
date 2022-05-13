@@ -3,10 +3,6 @@
 // ------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Moq;
 using ShoppingList.ConsoleApp.Models.ShoppingItems;
 using ShoppingList.ConsoleApp.Models.ShoppingItems.Exceptions;
@@ -25,13 +21,13 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
 
             invalidShoppingItemException.AddData(
                 key: nameof(ShoppingItem.Id),
-                values: "Id is required");
+                values: "Value is required.");
 
             var expectedShoppingItemValidationException =
                 new ShoppingItemValidationException(invalidShoppingItemException);
 
             // when 
-            Action retrieveShoppingItemByIdAction = () => 
+            Action retrieveShoppingItemByIdAction = () =>
                 this.shoppingItemService.RetrieveShoppingItemById(invalidShoppingItem.Id);
 
             // then

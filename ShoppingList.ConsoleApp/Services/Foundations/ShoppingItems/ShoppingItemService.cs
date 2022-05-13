@@ -37,6 +37,11 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
         });
 
         public ShoppingItem RetrieveShoppingItemById(int id) =>
-            this.storageBroker.SelectShoppingItemById(id);
+        TryCatch(() =>
+        {
+            ValidateInput(id);
+
+            return this.storageBroker.SelectShoppingItemById(id);
+        });
     }
 }

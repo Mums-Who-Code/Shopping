@@ -20,6 +20,9 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
                 (Rule: IsInvalid(integerValue: shoppingItem.Quantity), Parameter: nameof(ShoppingItem.Quantity)));
         }
 
+        private static void ValidateInput(int id) =>
+            Validate((Rule: IsInvalid(integerValue: id), Parameter: nameof(ShoppingItem.Id)));
+
         private static dynamic IsInvalid(int integerValue) => new
         {
             condition = integerValue == default,
