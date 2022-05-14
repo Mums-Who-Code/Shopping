@@ -10,7 +10,7 @@ namespace ShoppingList.ConsoleApp.Models.ShoppingItems.Exceptions
     public class NullArgumentShoppingItemException : Xeption
     {
         public NullArgumentShoppingItemException(Exception innerException)
-            : base(message: "Null argument shopping item error occured, fix the errors and try again.",
+            : base(message: "Null argument shopping item error occurred, fix the errors and try again.",
                   innerException)
         { }
     }
