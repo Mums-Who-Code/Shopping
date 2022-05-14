@@ -35,5 +35,13 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
         {
             return this.storageBroker.SelectAllShoppingItems();
         });
+
+        public ShoppingItem RetrieveShoppingItemById(int id) =>
+        TryCatch(() =>
+        {
+            ValidateInput(id);
+
+            return this.storageBroker.SelectShoppingItemById(id);
+        });
     }
 }
