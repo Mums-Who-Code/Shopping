@@ -22,5 +22,13 @@ namespace ShoppingList.ConsoleApp.Brokers.Storages
 
         public ShoppingItem SelectShoppingItemById(int id) =>
             ShoppingItems.Find(shoppingItem => shoppingItem.Id == id);
+
+        public ShoppingItem UpdateShoppingItem(ShoppingItem inputShoppingItem)
+        {
+            ShoppingItems.RemoveAll(shoppingItem => shoppingItem.Id == inputShoppingItem.Id);
+            ShoppingItems.Add(inputShoppingItem);
+
+            return inputShoppingItem;
+        }
     }
 }
