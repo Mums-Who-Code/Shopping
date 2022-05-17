@@ -12,5 +12,6 @@ namespace ShoppingList.ConsoleApp.Brokers.Storages
         ShoppingItem InsertShoppingItem(ShoppingItem shoppingitem);
         List<ShoppingItem> SelectAllShoppingItems();
         ShoppingItem SelectShoppingItemById(int id);
+        ShoppingItem UpdateShoppingItem(ShoppingItem inputShoppingItem);
     }
 }
