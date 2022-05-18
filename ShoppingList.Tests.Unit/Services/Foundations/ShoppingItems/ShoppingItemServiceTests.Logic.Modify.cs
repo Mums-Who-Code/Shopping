@@ -2,11 +2,6 @@
 // Copyright (c) MumsWhoCode. All rights reserved.
 // ------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
 using ShoppingList.ConsoleApp.Models.ShoppingItems;
@@ -15,7 +10,7 @@ using Xunit;
 namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
 {
     public partial class ShoppingItemServiceTests
-    { 
+    {
         [Fact]
         public void ShouldModifyShoppingItem()
         {
@@ -27,7 +22,7 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
 
             this.storageBrokerMock.Setup(broker =>
                 broker.UpdateShoppingItem(inputShoppingItem))
-                    .Returns(modifiedShoppingItem);   
+                    .Returns(modifiedShoppingItem);
 
             // when 
             ShoppingItem actualShoppingItem = this.shoppingItemService.ModifyShoppingItem(inputShoppingItem);
