@@ -12,5 +12,6 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
         ShoppingItem AddShoppingItem(ShoppingItem shoppingItem);
         List<ShoppingItem> RetrieveAllShoppingItems();
         ShoppingItem RetrieveShoppingItemById(int id);
+        ShoppingItem ModifyShoppingItem(ShoppingItem shoppingItem);
     }
 }
