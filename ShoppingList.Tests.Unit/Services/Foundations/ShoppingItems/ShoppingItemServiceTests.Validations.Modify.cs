@@ -40,5 +40,54 @@ namespace ShoppingList.Tests.Unit.Services.Foundations.ShoppingItems
             this.loggingBrokerMock.VerifyNoOtherCalls();
             this.storageBrokerMock.VerifyNoOtherCalls();
         }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        public void ShouldThrowValidationExceptionOnModifyIfShoppingItemIsInvalidAndLogIt(
+            string invalidText)
+        {
+            // given
+            var invalidShoppingItem = new ShoppingItem
+            {
+                Name = invalidText
+            };
+
+            var invalidShoppingItemException = new InvalidShoppingItemException();
+
+            invalidShoppingItemException.AddData(
+                key: nameof(ShoppingItem.Id),
+                values: "Value is required.");
+
+            invalidShoppingItemException.AddData(
+                key: nameof(ShoppingItem.Name),
+                values: "Name is required.");
+
+            invalidShoppingItemException.AddData(
+                key: nameof(ShoppingItem.Quantity),
+                values: "Value is required.");
+
+            var expectedShoppingItemValidationException =
+                new ShoppingItemValidationException(invalidShoppingItemException);
+
+            // when
+            Action modifyShoppingItemAction = () => this.shoppingItemService.ModifyShoppingItem(invalidShoppingItem);
+
+            // then
+            Assert.Throws<ShoppingItemValidationException>(modifyShoppingItemAction);
+
+            this.loggingBrokerMock.Verify(broker =>
+                broker.LogError(It.Is(SameExceptionAs(
+                    expectedShoppingItemValidationException))),
+                        Times.Once);
+
+            this.storageBrokerMock.Verify(broker =>
+                broker.UpdateShoppingItem(It.IsAny<ShoppingItem>()),
+                    Times.Never);
+
+            this.loggingBrokerMock.VerifyNoOtherCalls();
+            this.storageBrokerMock.VerifyNoOtherCalls();
+        }
     }
 }
