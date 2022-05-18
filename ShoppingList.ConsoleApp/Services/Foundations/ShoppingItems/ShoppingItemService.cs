@@ -43,5 +43,8 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
 
             return this.storageBroker.SelectShoppingItemById(id);
         });
+
+        public ShoppingItem ModifyShoppingItem(ShoppingItem shoppingItem) =>
+            throw new System.NotImplementedException();
     }
 }
