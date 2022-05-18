@@ -47,7 +47,7 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
         public ShoppingItem ModifyShoppingItem(ShoppingItem shoppingItem) =>
         TryCatch(() =>
         {
-            ValidateShoppingItemIsNotNull(shoppingItem);
+            ValidateShoppingItem(shoppingItem);
 
             return this.storageBroker.UpdateShoppingItem(shoppingItem);
         });
