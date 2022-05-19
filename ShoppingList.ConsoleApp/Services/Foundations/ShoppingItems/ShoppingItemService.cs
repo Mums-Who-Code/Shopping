@@ -53,6 +53,6 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
         });
 
         public ShoppingItem RemoveShoppingItem(ShoppingItem shoppingItem) =>
-            throw new System.NotImplementedException();
+            this.storageBroker.DeleteShoppingItem(shoppingItem);
     }
 }
