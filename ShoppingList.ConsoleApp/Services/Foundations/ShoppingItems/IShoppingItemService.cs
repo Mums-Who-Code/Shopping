@@ -13,5 +13,6 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
         List<ShoppingItem> RetrieveAllShoppingItems();
         ShoppingItem RetrieveShoppingItemById(int id);
         ShoppingItem ModifyShoppingItem(ShoppingItem shoppingItem);
+        ShoppingItem RemoveShoppingItem(ShoppingItem shoppingItem);
     }
 }

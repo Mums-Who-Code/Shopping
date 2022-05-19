@@ -51,5 +51,13 @@ namespace ShoppingList.ConsoleApp.Services.Foundations.ShoppingItems
 
             return this.storageBroker.UpdateShoppingItem(shoppingItem);
         });
+
+        public ShoppingItem RemoveShoppingItem(ShoppingItem shoppingItem) =>
+        TryCatch(() =>
+        {
+            ValidateShoppingItemIsNotNull(shoppingItem);
+
+            return this.storageBroker.DeleteShoppingItem(shoppingItem);
+        });
     }
 }
