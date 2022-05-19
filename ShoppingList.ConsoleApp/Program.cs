@@ -40,6 +40,15 @@ namespace ShoppingList.ConsoleApp
             shoppingItemService.AddShoppingItem(inputShoppingItem);
             List<ShoppingItem> storedShoppingItems = shoppingItemService.RetrieveAllShoppingItems();
             ShoppingItem returningShoppingItem = shoppingItemService.RetrieveShoppingItemById(24);
+
+            inputShoppingItem = new ShoppingItem
+            {
+                Id = 23,
+                Name = "New Shopping Item Bread",
+                Quantity = 4
+            };
+
+            ShoppingItem modifiedShoppingItem = shoppingItemService.ModifyShoppingItem(inputShoppingItem);
         }
     }
 }
