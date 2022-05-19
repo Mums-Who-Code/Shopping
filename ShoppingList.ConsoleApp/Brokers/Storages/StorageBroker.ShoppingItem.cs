@@ -30,5 +30,12 @@ namespace ShoppingList.ConsoleApp.Brokers.Storages
 
             return inputShoppingItem;
         }
+
+        public ShoppingItem DeleteShoppingItem(ShoppingItem shoppingItem)
+        {
+            ShoppingItems.Remove(shoppingItem);
+
+            return shoppingItem;
+        }
     }
 }

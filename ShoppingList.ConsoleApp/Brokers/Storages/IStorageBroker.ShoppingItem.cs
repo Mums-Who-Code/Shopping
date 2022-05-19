@@ -13,5 +13,6 @@ namespace ShoppingList.ConsoleApp.Brokers.Storages
         List<ShoppingItem> SelectAllShoppingItems();
         ShoppingItem SelectShoppingItemById(int id);
         ShoppingItem UpdateShoppingItem(ShoppingItem inputShoppingItem);
+        ShoppingItem DeleteShoppingItem(ShoppingItem shoppingItem);
     }
 }
