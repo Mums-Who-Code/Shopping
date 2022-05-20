@@ -49,6 +49,15 @@ namespace ShoppingList.ConsoleApp
             };
 
             ShoppingItem modifiedShoppingItem = shoppingItemService.ModifyShoppingItem(inputShoppingItem);
+
+            inputShoppingItem = new ShoppingItem
+            {
+                Id = 0,
+                Name = "Record to be deleted",
+                Quantity = 1
+            };
+
+            ShoppingItem deletedShoppingItem = shoppingItemService.RemoveShoppingItem(inputShoppingItem);
         }
     }
 }
